@@ -23,7 +23,11 @@ window.onload = function(){
 	 *
 	 */
 	function saveVersion() {
-	  localStorage['version'] = document.getElementById('version').value;
+		localStorage['version'] = document.getElementById('version').value;
+
+	 	chrome.tabs.executeScript({
+	    	file: 'content_script.js'
+	 	}); 
 	}
 
 	/**

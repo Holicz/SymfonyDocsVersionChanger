@@ -1,0 +1,2 @@
+- [ ] Redirect all opened tabs with docs, when version is changed anywhere
+- [ ] Load Symfony versions from remote source
