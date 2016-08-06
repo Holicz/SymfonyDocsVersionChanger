@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Symfony docs version changer",
-  "description": "This extension changes docs version to Symfony you are currently using.",
+  "description": "This extension changes Symfony docs version to version you are currently using.",
   "version": "1.0",
 
   "browser_action": {
