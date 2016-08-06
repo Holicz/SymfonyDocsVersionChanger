@@ -8,8 +8,22 @@ window.onload = function(){
 		localStorage['activity'] = 1;
 	}
 
+	if (!localStorage['applyToAll']) {
+		localStorage['applyToAll'] = 1;
+	}
+
 	/* Select selected version */
 	document.getElementById('version').value = localStorage['version'];
+
+	/* Check checkbox if needed */
+	if (localStorage['applyToAll'] == 1) {
+		document.getElementById("applyToAll").checked = true;
+	} else if (localStorage['applyToAll'] == 0) {
+		document.getElementById("applyToAll").checked = false;
+	} else {
+		localStorage['applyToAll'] = 1;
+		document.getElementById("applyToAll").checked = true;
+	}
 
 	/* For sure change to button */
 		if (localStorage['activity'] == 1) {
@@ -35,6 +49,12 @@ window.onload = function(){
 	 *
 	 */
 	function refreshTabs() {
+		if (localStorage['applyToAll'] == 0) {
+			chrome.tabs.executeScript({
+	    		file: 'content_script.js'
+	 		}); 
+			return false;
+		}
 		chrome.windows.getAll({populate:true},function(windows){ // Affect all tabs with this settings
 			windows.forEach(function(window){
 			    window.tabs.forEach(function(tab){
@@ -89,10 +109,31 @@ window.onload = function(){
 		document.getElementById('activityButton').innerHTML = label;
 	}
 
+	/**
+	 * Toggle applyToAll settings and check/uncheck related checkbox
+	 *
+	 */
+	function toggleApplyToAll() {
+		if (localStorage['applyToAll'] == 1) {
+			localStorage['applyToAll'] = 0;
+		} else if (localStorage['applyToAll'] == 0) {
+			localStorage['applyToAll'] = 1;
+			if (localStorage['activity'] == 1) {
+		 		refreshTabs();
+			}
+		} else {
+			localStorage['applyToAll'] = 1;
+			document.getElementById("applyToAll").checked = true;
+		}
+	}
+
 	/* Call saveVersion() on select box change */
 	document.querySelector('#version').addEventListener('change', saveVersion);
 
 	/* Call function toggleActivity() on button click */
 	document.querySelector('#activityButton').addEventListener('click', toggleActivity);
+
+	/* Call function toggleApplyToAll() on checkbox check */
+	document.querySelector('#applyToAll').addEventListener('change', toggleApplyToAll);
 }
 

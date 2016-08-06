@@ -18,7 +18,7 @@
         border: 1px solid #ccc;
         width: 100%;
         border-radius: 3px;
-        margin-bottom: 17px;
+        margin-bottom: 5px;
       }
 
       .select-style select {
@@ -33,6 +33,15 @@
 
       .select-style select:focus {
         outline: none;
+      }
+
+      .checkbox {
+        margin-bottom: 12px;
+      }
+
+      .checkbox span {
+        position: relative;
+        top: -2px;
       }
 
       hr {
@@ -98,6 +107,9 @@
         <option value="current">3.1</option>
         <option value="master">3.2</option>
       </select>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="applyToAll" id="applyToAll"><span>Apply to all opened tabs</span></label>
     </div>
     <hr>
     <button class="button disabled" id="activityButton">Disable</button>
