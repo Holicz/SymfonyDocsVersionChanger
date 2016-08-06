@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+
+  "name": "Symfony docs version changer",
+  "description": "This extension changes docs version to Symfony you are currently using.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icons/icon48.png",
+    "default_popup": "popup.html"
+  },
+
+  "permissions": [
+    "storage",
+    "tabs", "*://symfony.com/doc/*",
+    "activeTab"
+  ],
+
+  "icons": { 
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://symfony.com/doc/*"],
+      "js": ["content_script.js"]
+    }
+  ]
+}

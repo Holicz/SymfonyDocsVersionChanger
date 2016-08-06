@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style type="text/css">
+      html {
+        min-width: 200px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+      }
+
+      h1 {
+        font-size: 20px;
+        text-decoration: none;
+      }
+
+      .select-style {
+        border: 1px solid #ccc;
+        width: 100%;
+        border-radius: 3px;
+        margin-bottom: 20px;
+      }
+
+      .select-style select {
+        padding: 5px 8px;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        background-image: none;
+        -webkit-appearance: none;
+      }
+
+      .select-style select:focus {
+        outline: none;
+      }
+
+      a {
+        margin-top: 500px;
+        color: #64A3E8;
+        text-decoration: none;
+      }
+    </style>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <h1>I want docs version</h1>
+    <div class="select-style">
+      <select name="version" id="version">
+        <option value="2.7">2.7</option>
+        <option value="2.8">2.8</option>
+        <option value="3.0">3.0</option>
+        <option value="current">3.1</option>
+        <option value="master">3.2</option>
+      </select>
+    </div>
+    <center><a href="https://github.com/Holicz/SymfonyDocsVersionChanger" target="_blank">Github</a></center>
+  </body>
+</html>
