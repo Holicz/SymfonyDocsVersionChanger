@@ -1,8 +1,11 @@
 /* Listener for get data functions */
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   switch(message.method) {
-    case "getVersion":
+    case 'getVersion':
     	sendResponse({data: localStorage['version']});
+    	break;
+    case 'getActivity':
+    	sendResponse({data: localStorage['activity']});
     	break;
   }
 });

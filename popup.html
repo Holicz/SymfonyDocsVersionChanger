@@ -18,7 +18,7 @@
         border: 1px solid #ccc;
         width: 100%;
         border-radius: 3px;
-        margin-bottom: 20px;
+        margin-bottom: 17px;
       }
 
       .select-style select {
@@ -33,6 +33,51 @@
 
       .select-style select:focus {
         outline: none;
+      }
+
+      hr {
+        border: 0;
+        height: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .button {
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:18px;
+        padding:16px 31px;
+        text-decoration:none;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        outline: none; 
+      }
+
+      .button:active {
+        position:relative;
+        top:1px;
+        outline: none;
+      }
+
+      .enabled {
+        background-color:#41eba4;
+        border:1px solid #3ad393;
+        text-shadow:0px 1px 0px #3ad393;
+      }
+      .enabled:hover {
+        background-color:#3ad393;
+      }
+
+      .disabled {
+        background-color:#cc3340;
+        border:1px solid #b72d39;
+        text-shadow:0px 1px 0px #b72d39;
+      }
+      .disabled:hover {
+        background-color:#b72d39;
       }
 
       a {
@@ -54,6 +99,8 @@
         <option value="master">3.2</option>
       </select>
     </div>
+    <hr>
+    <button class="button disabled" id="activityButton">Disable</button>
     <center><a href="https://github.com/Holicz/SymfonyDocsVersionChanger" target="_blank">Github</a></center>
   </body>
 </html>
