@@ -27,10 +27,8 @@ window.onload = function () {
 
     /* For sure change to button */
     if (localStorage['activity'] == 1) {
-        console.log('change');
         changeButton('disabled', 'Disable');
     } else if (localStorage['activity'] == 0) {
-        console.log('change');
         changeButton('enabled', 'Enable');
     }
 
@@ -55,6 +53,7 @@ window.onload = function () {
             chrome.tabs.executeScript({
                 file: 'content_script.js'
             });
+
             return false;
         }
         chrome.windows.getAll({populate: true}, function (windows) { // Affect all tabs with this settings
@@ -63,7 +62,7 @@ window.onload = function () {
                     var parser = document.createElement('a'); // Create an 'a' element for easiest parsing of URL
                     parser.href = tab.url;
 
-                    var hostname = parser.hostname // Get website
+                    var hostname = parser.hostname; // Get website
                     var pathname = parser.pathname; // Parse current url to get paths
 
                     if (hostname == 'symfony.com') {
@@ -158,6 +157,10 @@ window.onload = function () {
 
         versions.forEach(function (version) {
             var opt = document.createElement('option');
+
+            if (localStorage['version'] == version) {
+                opt.selected = true;
+            }
 
             opt.value = version;
             opt.innerHTML = version;
