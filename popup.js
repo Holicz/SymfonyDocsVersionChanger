@@ -16,9 +16,9 @@ window.onload = function () {
     document.getElementById('version').value = localStorage['version'];
 
     /* Check checkbox if needed */
-    if (localStorage['applyToAll'] === 1) {
+    if (localStorage['applyToAll'] == 1) {
         document.getElementById("applyToAll").checked = true;
-    } else if (localStorage['applyToAll'] === 0) {
+    } else if (localStorage['applyToAll'] == 0) {
         document.getElementById("applyToAll").checked = false;
     } else {
         localStorage['applyToAll'] = 1;
@@ -26,9 +26,11 @@ window.onload = function () {
     }
 
     /* For sure change to button */
-    if (localStorage['activity'] === 1) {
+    if (localStorage['activity'] == 1) {
+        console.log('change');
         changeButton('disabled', 'Disable');
-    } else if (localStorage['activity'] === 0) {
+    } else if (localStorage['activity'] == 0) {
+        console.log('change');
         changeButton('enabled', 'Enable');
     }
 
@@ -39,7 +41,7 @@ window.onload = function () {
     function saveVersion() {
         localStorage['version'] = document.getElementById('version').value; // Save version
 
-        if (localStorage['activity'] === 1) {
+        if (localStorage['activity'] == 1) {
             refreshTabs();
         }
     }
@@ -49,7 +51,7 @@ window.onload = function () {
      *
      */
     function refreshTabs() {
-        if (localStorage['applyToAll'] === 0) {
+        if (localStorage['applyToAll'] == 0) {
             chrome.tabs.executeScript({
                 file: 'content_script.js'
             });
@@ -64,12 +66,12 @@ window.onload = function () {
                     var hostname = parser.hostname // Get website
                     var pathname = parser.pathname; // Parse current url to get paths
 
-                    if (hostname === 'symfony.com') {
+                    if (hostname == 'symfony.com') {
                         var paths = pathname.split("/");
                         var currentVersion = paths[2];
                         var wanterVersion = localStorage['version'];
 
-                        if (currentVersion !== wanterVersion && hostname === 'symfony.com' && paths[1] === 'doc') { // And finally if we are not in the right docs version...
+                        if (currentVersion !== wanterVersion && hostname == 'symfony.com' && paths[1] == 'doc') { // And finally if we are not in the right docs version...
                             paths[2] = wanterVersion;
                             pathname = paths.join('/'); // ...create new URL...
 
@@ -88,10 +90,10 @@ window.onload = function () {
     function toggleActivity() {
         var activity = localStorage['activity'];
 
-        if (activity === 0) {
+        if (activity == 0) {
             localStorage['activity'] = 1;
             changeButton('disabled', 'Disable');
-        } else if (activity === 1) {
+        } else if (activity == 1) {
             localStorage['activity'] = 0;
             changeButton('enabled', 'Enable');
         } else {
@@ -99,7 +101,7 @@ window.onload = function () {
             changeButton('disabled', 'Disable');
         }
 
-        if (localStorage['activity'] === 1) {
+        if (localStorage['activity'] == 1) {
             refreshTabs();
         }
     }
@@ -114,11 +116,11 @@ window.onload = function () {
      *
      */
     function toggleApplyToAll() {
-        if (localStorage['applyToAll'] === 1) {
+        if (localStorage['applyToAll'] == 1) {
             localStorage['applyToAll'] = 0;
-        } else if (localStorage['applyToAll'] === 0) {
+        } else if (localStorage['applyToAll'] == 0) {
             localStorage['applyToAll'] = 1;
-            if (localStorage['activity'] === 1) {
+            if (localStorage['activity'] == 1) {
                 refreshTabs();
             }
         } else {
@@ -126,6 +128,45 @@ window.onload = function () {
             document.getElementById("applyToAll").checked = true;
         }
     }
+
+    function loadVersions() {
+        var request = new XMLHttpRequest();
+        request.open("GET", "https://api.github.com/repos/symfony/symfony-docs/branches", false);
+        request.send();
+
+        var response = JSON.parse(request.responseText);
+        var select = document.getElementById('version');
+
+        response.forEach(function (version) {
+            if (/^[234]{1}[.]{1}[0-9]{1}$/.test(version['name'])) {
+                var opt = document.createElement('option');
+
+                if (localStorage['version'] == version['name']) {
+                    opt.selected = true;
+                }
+
+                opt.value = version['name'];
+                opt.innerHTML = version['name'];
+                select.appendChild(opt);
+            }
+        });
+    }
+
+    function loadOtherVersions() {
+        var versions = ['current', 'master'];
+        var select = document.getElementById('version');
+
+        versions.forEach(function (version) {
+            var opt = document.createElement('option');
+
+            opt.value = version;
+            opt.innerHTML = version;
+            select.appendChild(opt);
+        });
+    }
+
+    loadVersions();
+    loadOtherVersions();
 
     /* Call saveVersion() on select box change */
     document.querySelector('#version').addEventListener('change', saveVersion);
