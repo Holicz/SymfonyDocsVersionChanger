@@ -21,11 +21,12 @@ chrome.runtime.sendMessage(
                     var paths = pathname.split("/");
                     var currentVersion = paths[2];
 
-                    if (currentVersion !== wanterVersion && hostname === 'symfony.com' && paths[1] === 'doc') { // And finally if we are not in the right docs version...
+                    if (currentVersion !== wanterVersion && hostname === 'symfony.com' && paths[1] === 'doc' && redirected) { // And finally if we are not in the right docs version...
                         paths[2] = wanterVersion;
                         pathname = paths.join('/'); // ...create new URL...
 
                         chrome.runtime.sendMessage({redirect: "https://symfony.com" + pathname}); // ...and let's redirect
+                        var redirected = true;
                     }
                 }
             }
