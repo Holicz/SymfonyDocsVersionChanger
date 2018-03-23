@@ -1,119 +1,122 @@
 <!doctype html>
 
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      html {
-        min-width: 200px;
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-      }
+    <head>
+        <title>Getting Started Extension's Popup</title>
+        <style type="text/css">
+            html {
+                min-width: 200px;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+            }
 
-      h1 {
-        font-size: 20px;
-        text-decoration: none;
-      }
+            h1 {
+                font-size: 20px;
+                text-decoration: none;
+            }
 
-      .select-style {
-        border: 1px solid #ccc;
-        width: 100%;
-        border-radius: 3px;
-        margin-bottom: 5px;
-      }
+            .select-style {
+                border: 1px solid #ccc;
+                width: 100%;
+                border-radius: 3px;
+                margin-bottom: 5px;
+            }
 
-      .select-style select {
-        padding: 5px 8px;
-        width: 100%;
-        border: none;
-        box-shadow: none;
-        background: transparent;
-        background-image: none;
-        -webkit-appearance: none;
-      }
+            .select-style select {
+                padding: 5px 8px;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                background-image: none;
+                -webkit-appearance: none;
+            }
 
-      .select-style select:focus {
-        outline: none;
-      }
+            .select-style select:focus {
+                outline: none;
+            }
 
-      .checkbox {
-        margin-bottom: 12px;
-      }
+            .checkbox {
+                margin-bottom: 12px;
+            }
 
-      .checkbox span {
-        position: relative;
-        top: -2px;
-      }
+            .checkbox span {
+                position: relative;
+                top: -2px;
+            }
 
-      hr {
-        border: 0;
-        height: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-      }
+            hr {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
 
-      .button {
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:18px;
-        padding:16px 31px;
-        text-decoration:none;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        width: 100%;
-        outline: none; 
-      }
+            .button {
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 18px;
+                padding: 16px 31px;
+                text-decoration: none;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                width: 100%;
+                outline: none;
+            }
 
-      .button:active {
-        position:relative;
-        top:1px;
-        outline: none;
-      }
+            .button:active {
+                position: relative;
+                top: 1px;
+                outline: none;
+            }
 
-      .enabled {
-        background-color:#41eba4;
-        border:1px solid #3ad393;
-        text-shadow:0px 1px 0px #3ad393;
-      }
-      .enabled:hover {
-        background-color:#3ad393;
-      }
+            .enabled {
+                background-color: #41eba4;
+                border: 1px solid #3ad393;
+                text-shadow: 0px 1px 0px #3ad393;
+            }
 
-      .disabled {
-        background-color:#cc3340;
-        border:1px solid #b72d39;
-        text-shadow:0px 1px 0px #b72d39;
-      }
-      .disabled:hover {
-        background-color:#b72d39;
-      }
+            .enabled:hover {
+                background-color: #3ad393;
+            }
 
-      a {
-        margin-top: 500px;
-        color: #64A3E8;
-        text-decoration: none;
-      }
-    </style>
-    <script src="popup.js"></script>
-  </head>
-  <body>
-    <h1>I want docs version</h1>
-    <div class="select-style">
-      <select name="version" id="version">
-        <option value="2.7">2.7</option>
-        <option value="2.8">2.8</option>
-        <option value="3.4">3.4</option>
-        <option value="4.0">4.0</option>
-        <option value="current">Current</option>
-        <option value="master">Master</option>
-      </select>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="applyToAll" id="applyToAll"><span>Apply to all opened tabs</span></label>
-    </div>
-    <hr>
-    <button class="button disabled" id="activityButton">Disable</button>
-    <center><a href="https://github.com/Holicz/SymfonyDocsVersionChanger" target="_blank">Github</a></center>
-  </body>
+            .disabled {
+                background-color: #cc3340;
+                border: 1px solid #b72d39;
+                text-shadow: 0px 1px 0px #b72d39;
+            }
+
+            .disabled:hover {
+                background-color: #b72d39;
+            }
+
+            a {
+                margin-top: 500px;
+                color: #64A3E8;
+                text-decoration: none;
+            }
+        </style>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <h1>I want docs version</h1>
+        <div class="select-style">
+            <select name="version" id="version">
+                <option value="2.7">2.7</option>
+                <option value="2.8">2.8</option>
+                <option value="3.4">3.4</option>
+                <option value="4.0">4.0</option>
+                <option value="current">Current</option>
+                <option value="master">Master</option>
+            </select>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" name="applyToAll"
+                          id="applyToAll"><span>Apply to all opened tabs</span></label>
+        </div>
+        <hr>
+        <button class="button disabled" id="activityButton">Disable</button>
+        <center><a href="https://github.com/Holicz/SymfonyDocsVersionChanger" target="_blank">Github</a></center>
+    </body>
 </html>
