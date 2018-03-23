@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Symfony docs version changer",
-  "description": "This extension changes Symfony docs version to version you are currently using.",
-  "version": "1.1",
+  "description": "Automatically redirects Symfony docs to preferred version. Preferred version is configurable.",
+  "version": "1.2",
 
   "browser_action": {
     "default_icon": "icons/icon48.png",
