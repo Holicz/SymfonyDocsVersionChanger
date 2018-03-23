@@ -1,5 +1,6 @@
 # About
-This extension changes docs version to Symfony you are currently using.
+Automatically redirects Docs to preferred version. Preferred version is configurable.
+
 # Todo
 - [ ] Load Symfony versions from remote source
 - [ ] Check new URL and if the result is 404, stay on current version and inform user
