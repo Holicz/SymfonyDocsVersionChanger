@@ -1,5 +1,5 @@
 # About
-Automatically redirects Docs to preferred version. Preferred version is configurable.
+Automatically redirects Symfony docs to preferred version. Preferred version is configurable.
 
 # Todo
 - [ ] Load Symfony versions from remote source
