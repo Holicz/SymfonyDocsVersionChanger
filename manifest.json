@@ -3,7 +3,7 @@
 
   "name": "Symfony docs version changer",
   "description": "Automatically redirects Symfony docs to preferred version. Preferred version is configurable.",
-  "version": "1.1.1",
+  "version": "2.0",
 
   "browser_action": {
     "default_icon": "icons/icon48.png",
